@@ -1,5 +1,6 @@
 package org.com.testing.with.simpletest
 
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel : ViewModel(), LifecycleObserver {
 
     private val TAG = MainViewModel::class.java.simpleName
 
@@ -75,7 +76,7 @@ class MainViewModel : ViewModel() {
                 imageURL = "https://cdn4.iconfinder.com/data/icons/bettericons/354/github-512.png"
             ),
         )
-        _data.postValue(lstRes)
+        _data.postValue(lstRes.reversed())
     }
 
 }
